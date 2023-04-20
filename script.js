@@ -19,4 +19,18 @@ function playRound(playerSelection, computerSelection){
         return 'You lose! ${computerSelection} beats ${playerSelection}';
     }
 
+// Plays the game for a specified number of rounds and keeps score
+function game(numRounds){
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < numRounds; i++){
+        const playerSelection = promt('pick your choice: Rock, Paper, Scissor');
+        const computerSelection = getComputerChoice();
+        const roundResult = playRound(playerSelection, computerSelection);
+        console.log(roundResult);
+    }
+
+}
+
 }
