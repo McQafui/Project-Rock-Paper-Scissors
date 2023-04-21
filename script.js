@@ -18,6 +18,7 @@ function playRound(playerSelection, computerSelection){
     }else{
         return 'You lose! ${computerSelection} beats ${playerSelection}';
     }
+}
 
 // Plays the game for a specified number of rounds and keeps score
 function game(numRounds){
@@ -25,12 +26,32 @@ function game(numRounds){
     let computerScore = 0;
 
     for (let i = 0; i < numRounds; i++){
-        const playerSelection = promt('pick your choice: Rock, Paper, Scissor');
+        const playerSelection = prompt('Pick your choice: Rock, Paper, Scissors');
         const computerSelection = getComputerChoice();
         const roundResult = playRound(playerSelection, computerSelection);
         console.log(roundResult);
+
+        if (roundResult.includes('win')){
+            playerScore++;
+        }else if (roundResult.includes('lose')){
+            computerScore++;
+        }
     }
 
+    // Declares the winner of the game
+    console.log('Game over! You score ${playerScore} and Computer scored ${computerScore}');
+
+    if (playerScore > computerScore){
+        console.log('You win!');
+    }else if (playerScore < computerScore){
+        console.log('You lose!');
+    }else {
+        console.log("it's a tie game!");
+    }
 }
 
-}
+
+// Call the game function to play the game for 5 rounds
+game(5);
+
+
